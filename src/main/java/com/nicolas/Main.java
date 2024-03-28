@@ -62,7 +62,7 @@ public class Main {
         File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
         // Especifica o local onde o screenshot será salvo
-        File destFile = new File("C:/Users/Ti/Pictures/Screenshots/screenshot.png");
+        File destFile = new File("caminho/screenshot.png");
 
         // Copia o arquivo do screenshot para o local especificado
         FileUtils.copyFile(srcFile, destFile);
