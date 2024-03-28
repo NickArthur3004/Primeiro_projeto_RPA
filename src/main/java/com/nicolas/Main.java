@@ -1,13 +1,13 @@
 package com.nicolas;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
         String pesquisa = "Oque é RPA?";
         String pesquisa2 = "busca de cep";
@@ -52,6 +52,20 @@ public class Main {
         WebElement logradouro = navegador.findElement(By.cssSelector("#resultado-DNEC > tbody > tr > td:nth-child(1)"));
         String logradouroCapturado = logradouro.getText();
         System.out.println(logradouroCapturado);
+
+
+        //Fazendo registro com Captura de tela
+        // Converte o driver para TakesScreenshot
+        TakesScreenshot scrShot =((TakesScreenshot)navegador);
+
+        // Captura o screenshot como um arquivo
+        File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
+
+        // Especifica o local onde o screenshot será salvo
+        File destFile = new File("C:/Users/Ti/Pictures/Screenshots/screenshot.png");
+
+        // Copia o arquivo do screenshot para o local especificado
+        FileUtils.copyFile(srcFile, destFile);
 
         //Fechando o navegador
         navegador.quit();
